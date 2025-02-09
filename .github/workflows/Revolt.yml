@@ -1,0 +1,24 @@
+name: Revolt
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  push:
+    branches:
+      - main
+
+jobs:
+  auto-commit:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Buat commit
+      run: |
+        date > date.txt
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add date.txt
+        git commit -m "Automated commit for $(date -u)"
+        git push
