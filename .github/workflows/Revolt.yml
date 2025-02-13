@@ -2,7 +2,7 @@ name: Revolt
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: "*/30 * * * *"
   push:
     branches:
       - main
